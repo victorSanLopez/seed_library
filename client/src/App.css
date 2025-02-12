@@ -7,6 +7,12 @@
   --color-hint: #717171;
   --title-font: "PlayfairDisplay";
   --text-font: "LibreFranklin";
+  --special-font: "PoiretOne";
+}
+
+@font-face {
+  font-family: "PoiretOne";
+  src: url("/fonts/poiret_one.ttf");
 }
 
 @font-face {
