@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import LandingLayout from "./pages/landingLayout/LandingLayout";
+import SeedLibraryPage from "./pages/seedLibraryPage/SeedLibraryPage";
 
 export const router = createBrowserRouter([
   {
@@ -9,11 +10,11 @@ export const router = createBrowserRouter([
   },
   {
     element: <App />,
-    // children: [
-    //   {
-    //     path: "/ma-grainotheque",
-    //     element: <SeedLibraryPage />,
-    //   },
-    // ],
+    children: [
+      {
+        path: "/ma-grainotheque",
+        element: <SeedLibraryPage />,
+      },
+    ],
   },
 ]);
