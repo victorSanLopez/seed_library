@@ -1,11 +1,11 @@
 import { ToastContainer } from "react-toastify";
 import "./App.css";
-import UserRegistrationForm from "./components/userRegistrationForm/UserRegistrationForm";
+import SignInPopup from "./components/signInPopup/SignInPopup";
 
 function App() {
   return (
     <>
-      <UserRegistrationForm />
+      <SignInPopup />
       <ToastContainer />
     </>
   );
