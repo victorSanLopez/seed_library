@@ -12,6 +12,10 @@ export const userValidation = {
   },
   email: {
     required: "L'email est nécessaire pour t'identifier' ! 📩",
+    pattern: {
+      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      message: "Hmm, ça ne ressemble pas à un email valide... 📧",
+    },
   },
   password: {
     required: "Un mot de passe sécurisé, c'est important ! 🔒",
@@ -22,6 +26,14 @@ export const userValidation = {
     maxLength: {
       value: 150,
       message: "150 caractères max, pas besoin d'en faire trop ! 😉",
+    },
+    validate: (value: string) => {
+      if (!/[a-z]/.test(value)) return "Ajoute au moins une minuscule (a-z) 🔠";
+      if (!/[A-Z]/.test(value)) return "Ajoute au moins une majuscule (A-Z) 🔡";
+      if (!/[0-9]/.test(value)) return "Ajoute au moins un chiffre (0-9) 🔢";
+      if (!/[#?!@$%^&*\-+'()\[\]_]/.test(value))
+        return "Ajoute au moins un caractère spécial (#?!@$%^&*-'+()_[]) 🔑";
+      return true;
     },
   },
   confirmPassword: (watch: (field: string) => string) => ({

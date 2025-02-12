@@ -70,6 +70,7 @@ export default function userRegistrationForm() {
           <input
             id="confirmPassword"
             type="password"
+            autoComplete="new-password"
             {...register(
               "confirmPassword",
               userValidation.confirmPassword(watch),
