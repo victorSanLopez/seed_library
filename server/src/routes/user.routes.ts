@@ -1,8 +1,8 @@
 import express from "express";
+import userActions from "../modules/user/userActions";
 
 const router = express.Router();
 
-import userRouter from "./routes/user.routes";
-router.use("/api/v1/users", userRouter);
+router.post("/", userActions.add);
 
 export default router;
