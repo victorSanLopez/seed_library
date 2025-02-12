@@ -6,7 +6,7 @@ import type { UserType } from "../../types/user";
 import { userValidation } from "../../validations/userRegistrationValidations";
 import style from "./userRegistrationForm.module.css";
 
-export default function userRegistrationForm() {
+export default function toto() {
   const {
     register,
     handleSubmit,
