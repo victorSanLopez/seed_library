@@ -50,6 +50,18 @@
   font-size: 1.5em;
 }
 
+.text {
+  font-size: 0.8em;
+}
+
+.link {
+  font-size: 0.8em;
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 span {
   color: red;
 }
