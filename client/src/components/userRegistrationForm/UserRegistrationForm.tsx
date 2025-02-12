@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 import type { UserType } from "../../types/user";
+import { userValidation } from "../../validations/userRegistrationValidations";
 import style from "./userRegistrationForm.module.css";
 
 export default function userRegistrationForm() {
@@ -22,9 +23,7 @@ export default function userRegistrationForm() {
       );
       toast.success(response.data.message);
     } catch (err) {
-      toast.error(
-        "Une erreur s'est produite, veuillez réessayer ultérieurement.",
-      );
+      toast.error("Oups, un souci est survenu. On réessaie plus tard ? 🙃");
     }
   };
 
@@ -32,34 +31,25 @@ export default function userRegistrationForm() {
     <section className={style.popupContainer}>
       <form onSubmit={handleSubmit(sendData)} className={style.form}>
         <h2 className={style.title}>
-          Inscrivez-vous pour accéder à votre espace personnel
+          Rejoins-nous et personnalise ton espace 🌱
         </h2>
-        <label className={style.formLabel} htmlFor="pseudonyme">
-          Pseudonyme
+        <label className={style.formLabel} htmlFor="username">
+          Pseudo
           <input
+            id="username"
             type="text"
-            {...register("username", {
-              required: "Ce champ est obligatoire",
-              minLength: {
-                value: 2,
-                message:
-                  "Votre pseudonyme devrait contenir au moins 2 caractères. 😌",
-              },
-              maxLength: {
-                value: 50,
-                message:
-                  "Votre pseudonyme ne peux pas faire plus de 50 caractères. 😉",
-              },
-            })}
+            {...register("username", userValidation.username)}
             className={style.formInput}
           />
           {errors.username && <span>{errors.username.message}</span>}
         </label>
         <label className={style.formLabel} htmlFor="email">
-          adresse email
+          adresse e-mail
           <input
+            id="email"
             type="email"
-            {...register("email", { required: "Ce champ est obligatoire" })}
+            autoComplete="email"
+            {...register("email", userValidation.email)}
             className={style.formInput}
           />
           {errors.email && <span>{errors.email.message}</span>}
@@ -67,42 +57,23 @@ export default function userRegistrationForm() {
         <label className={style.formLabel} htmlFor="password">
           Mot de passe
           <input
+            id="password"
             type="password"
-            {...register("password", {
-              required: "Ce champ est obligatoire",
-              minLength: {
-                value: 12,
-                message: "Le mot de passe doit contenir au moins 12 caratères",
-              },
-              maxLength: {
-                value: 20,
-                message: "Le mot de passe doit contenir moins de 20 caractères",
-              },
-            })}
+            autoComplete="new-password"
+            {...register("password", userValidation.password)}
             className={style.formInput}
           />
           {errors.password && <span>{errors.password.message}</span>}
         </label>
         <label className={style.formLabel} htmlFor="confirmPassword">
-          Confirmer le mot de passe
+          Confirmation du mot de passe
           <input
+            id="confirmPassword"
             type="password"
-            {...register("confirmPassword", {
-              required: "Ce champ est obligatoire",
-              minLength: {
-                value: 12,
-                message: "Le mot de passe doit contenir au moins 12 caratères",
-              },
-              maxLength: {
-                value: 20,
-                message: "Le mot de passe doit contenir moins de 20 caractères",
-              },
-              validate: (value: string) => {
-                if (watch("password") !== value) {
-                  return "Le mot de passe saisit est différent";
-                }
-              },
-            })}
+            {...register(
+              "confirmPassword",
+              userValidation.confirmPassword(watch),
+            )}
             className={style.formInput}
           />
           {errors.confirmPassword && (
@@ -110,7 +81,7 @@ export default function userRegistrationForm() {
           )}
         </label>
         <button type="submit" className={style.submitButton}>
-          VALIDER
+          Valider
         </button>
       </form>
     </section>

@@ -8,7 +8,7 @@ const add: RequestHandler = async (req, res, next) => {
     const insertId: number = await userRepository.create(newUser);
 
     res.status(201).json({
-      message: `Bienvenue ${req.body.username}`,
+      message: `Bienvenue dans l'aventure ${req.body.username} ! 🚀 `,
       id: insertId,
     });
   } catch (err) {
