@@ -1,13 +1,17 @@
-import { ToastContainer } from "react-toastify";
 import "./App.css";
-import SignInPopup from "./components/signInPopup/SignInPopup";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/footer/Footer";
+import NavHeader from "./components/navHeader/NavHeader";
 
 function App() {
   return (
-    <>
-      <SignInPopup />
-      <ToastContainer />
-    </>
+    <div className="appContainer">
+      <NavHeader />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

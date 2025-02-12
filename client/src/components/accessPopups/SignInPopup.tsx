@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import type { UserType } from "../../types/user";
 import { userValidation } from "../../validations/userRegistrationValidations";
-import style from "./signInPopUp.module.css";
+import style from "./accessPopups.module.css";
 
 export default function SignInPopup() {
   const {
@@ -21,10 +22,16 @@ export default function SignInPopup() {
         { withCredentials: true },
       );
       toast.success(response.data.message);
+
+      setTimeout(() => {
+        navigate("/ma-grainotheque");
+      }, 1984);
     } catch (err) {
-      toast.error("Erreur inattendue, veuillez réessayer.");
+      toast.error("Utilisateur ou mot de passe inconnu.");
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <section className={style.popupContainer}>
