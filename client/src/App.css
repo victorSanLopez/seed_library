@@ -1,3 +1,24 @@
+:root {
+  --color-background: #eadccd;
+  --color-primary: #342a14;
+  --color-secondary: #5b7821;
+  --color-accent: #a6ab35;
+  --color-alert: #ab3535;
+  --color-hint: #717171;
+  --title-font: "PlayfairDisplay";
+  --text-font: "LibreFranklin";
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("/fonts/playfair_display.ttf");
+}
+
+@font-face {
+  font-family: "LibreFranklin";
+  src: url("/fonts/libre_franklin.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
