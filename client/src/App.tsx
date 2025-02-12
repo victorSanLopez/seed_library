@@ -1,12 +1,10 @@
-import { ToastContainer } from "react-toastify";
 import "./App.css";
-import SignInPopup from "./components/signInPopup/SignInPopup";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <SignInPopup />
-      <ToastContainer />
+      <Outlet />
     </>
   );
 }
