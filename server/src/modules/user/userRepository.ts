@@ -1,5 +1,5 @@
 import databaseClient from "../../../database/client";
-import type { Result } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 import type { UserType } from "../../types/modules";
 
 class userRepository {
@@ -17,6 +17,17 @@ class userRepository {
     );
 
     return result.insertId;
+  }
+
+  async readByEmail(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT email, password
+        FROM user 
+        WHERE email = ?`,
+      [email],
+    );
+
+    return rows.length ? (rows[0] as UserType) : null;
   }
 }
 
