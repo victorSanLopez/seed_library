@@ -1,4 +1,6 @@
 import type { RequestHandler } from "express";
+import { decodeToken } from "../../helpers/token.utils";
+import type { DecodedTokenType } from "../../types/helpers";
 import type { UserType } from "../../types/modules";
 import userRepository from "./userRepository";
 
@@ -34,4 +36,28 @@ const getHashedPasswordByEmail: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { add, getHashedPasswordByEmail };
+const getIdByTokenUsername: RequestHandler = async (req, res, next) => {
+  try {
+    const decodedToken = decodeToken(
+      req.cookies.auth_token,
+    ) as DecodedTokenType;
+
+    const userId = await userRepository.readIdByUsername(
+      decodedToken?.username,
+    );
+
+    if (!userId) {
+      res
+        .status(404)
+        .json({ message: "Il semblerait que tu ne sois pas connecté 😅" });
+    }
+
+    req.body.user_id = userId;
+
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { add, getHashedPasswordByEmail, getIdByTokenUsername };
