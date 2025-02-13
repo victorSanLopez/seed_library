@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { generateHashedPassword } from "../helpers/passwordUtils";
+import { generateHashedPassword } from "../helpers/password.utils";
 
 export const hashPassword: RequestHandler = async (req, res, next) => {
   try {

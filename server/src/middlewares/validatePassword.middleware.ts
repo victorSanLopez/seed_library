@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { comparePasswords } from "../helpers/passwordUtils";
+import { comparePasswords } from "../helpers/password.utils";
 
 export const validatePassword: RequestHandler = async (req, res, next) => {
   try {
