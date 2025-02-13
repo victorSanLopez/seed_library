@@ -23,3 +23,10 @@ export const login: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+
+export const logout: RequestHandler = (req, res) => {
+  res
+    .status(200)
+    .clearCookie("auth_token")
+    .json({ message: "Utilisateur déconnecté" });
+};

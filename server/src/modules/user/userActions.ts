@@ -70,6 +70,26 @@ const getIdByTokenUsername: RequestHandler = async (req, res, next) => {
   }
 };
 
+const readTokenRoleByUsername: RequestHandler = async (req, res, next) => {
+  try {
+    const decodedToken = decodeToken(
+      req.cookies.auth_token,
+    ) as DecodedTokenType;
+
+    const userRole = await userRepository.readRoleByUsername(
+      decodedToken?.username,
+    );
+
+    if (userRole !== 1) {
+      res.json({ authentified: false });
+    } else {
+      res.json({ authentified: true });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
@@ -87,5 +107,6 @@ export default {
   add,
   getHashedPasswordByEmail,
   getIdByTokenUsername,
+  readTokenRoleByUsername,
   destroy,
 };

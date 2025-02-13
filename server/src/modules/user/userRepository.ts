@@ -51,6 +51,17 @@ class userRepository {
     return rows[0].id as number;
   }
 
+  async readRoleByUsername(payloadUsername: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT role_id
+        FROM user
+        WHERE username = ?`,
+      [payloadUsername],
+    );
+
+    return rows[0].role_id as number;
+  }
+
   async delete(id: number) {
     const [result] = await databaseClient.query<Result>(
       `DELETE FROM user
