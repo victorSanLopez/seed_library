@@ -10,6 +10,7 @@ export const authenticateUser: RequestHandler = async (req, res, next) => {
     }
 
     const verifiedToken = jwt.verify(token, process.env.APP_SECRET as string);
+
     if (verifiedToken) {
       next();
     } else {

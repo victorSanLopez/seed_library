@@ -46,15 +46,13 @@ const getHashedPasswordByEmail: RequestHandler = async (req, res, next) => {
   }
 };
 
-const getIdByTokenUsername: RequestHandler = async (req, res, next) => {
+const getIdByTokenEmail: RequestHandler = async (req, res, next) => {
   try {
     const decodedToken = decodeToken(
       req.cookies.auth_token,
     ) as DecodedTokenType;
 
-    const userId = await userRepository.readIdByUsername(
-      decodedToken?.username,
-    );
+    const userId = await userRepository.readIdByEmail(decodedToken?.email);
 
     if (!userId) {
       res
@@ -70,20 +68,18 @@ const getIdByTokenUsername: RequestHandler = async (req, res, next) => {
   }
 };
 
-const readTokenRoleByUsername: RequestHandler = async (req, res, next) => {
+const readTokenRoleByEmail: RequestHandler = async (req, res, next) => {
   try {
     const decodedToken = decodeToken(
       req.cookies.auth_token,
     ) as DecodedTokenType;
 
-    const userRole = await userRepository.readRoleByUsername(
-      decodedToken?.username,
-    );
+    const userRole = await userRepository.readRoleByEmail(decodedToken?.email);
 
     if (userRole !== 1) {
-      res.json({ authentified: false });
+      res.json({ authenticated: false });
     } else {
-      res.json({ authentified: true });
+      res.json({ authenticated: true });
     }
   } catch (err) {
     next(err);
@@ -106,7 +102,7 @@ export default {
   browse,
   add,
   getHashedPasswordByEmail,
-  getIdByTokenUsername,
-  readTokenRoleByUsername,
+  getIdByTokenEmail,
+  readTokenRoleByEmail,
   destroy,
 };

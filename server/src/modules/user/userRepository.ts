@@ -40,23 +40,23 @@ class userRepository {
     return rows.length ? (rows[0] as UserType) : null;
   }
 
-  async readIdByUsername(payloadUsername: string) {
+  async readIdByEmail(payloadEmail: string) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT id
         FROM user
-        WHERE username = ?`,
-      [payloadUsername],
+        WHERE email = ?`,
+      [payloadEmail],
     );
 
     return rows[0].id as number;
   }
 
-  async readRoleByUsername(payloadUsername: string) {
+  async readRoleByEmail(payloadEmail: string) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT role_id
         FROM user
-        WHERE username = ?`,
-      [payloadUsername],
+        WHERE email = ?`,
+      [payloadEmail],
     );
 
     return rows[0].role_id as number;

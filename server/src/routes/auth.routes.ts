@@ -16,6 +16,6 @@ router.post(
 router.post("/logout", logout);
 
 router.use(authenticateUser, verifyTokenExpiration);
-router.get("/protected", userActions.readTokenRoleByUsername);
+router.get("/protected", userActions.readTokenRoleByEmail);
 
 export default router;
