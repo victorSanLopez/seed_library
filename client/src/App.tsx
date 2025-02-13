@@ -1,5 +1,6 @@
 import "./App.css";
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Footer from "./components/footer/Footer";
 import NavHeader from "./components/navHeader/NavHeader";
 
@@ -11,6 +12,7 @@ function App() {
         <Outlet />
       </main>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { generateToken } from "../helpers/tokenUtils";
+import { generateToken } from "../helpers/token.utils";
 
 export const login: RequestHandler = async (req, res, next) => {
   try {
