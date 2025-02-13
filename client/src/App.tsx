@@ -2,12 +2,12 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Footer from "./components/footer/Footer";
-import NavHeader from "./components/navHeader/NavHeader";
+import UserNavHeader from "./components/navHeader/UserNavHeader";
 
 function App() {
   return (
     <div className="appContainer">
-      <NavHeader />
+      <UserNavHeader />
       <main>
         <Outlet />
       </main>

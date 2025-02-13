@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import style from "./navHeader.module.css";
 
-export default function NavHeader() {
+export default function UserNavHeader() {
   return (
     <header className={style.headerContainer}>
       <h1 className={style.headerTitle}>Mon Grainetier virtuel</h1>
