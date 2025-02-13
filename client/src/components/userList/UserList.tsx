@@ -39,6 +39,8 @@ export default function UserList() {
       );
 
       toast.success("Utilisateur supprimé avec succès ! ✊");
+
+      closeModal();
     } catch (error) {
       toast.error("Nous n'avons pas pu supprimer l'utilisateur... 😟");
     }
@@ -56,11 +58,13 @@ export default function UserList() {
   return (
     <>
       {userData?.map((currentUserData: UserType) => (
-        <section className={style.recipeFrame} key={currentUserData.id}>
-          <ul className={style.recipeList}>
-            <li>{currentUserData.username}</li>
-            <li>{currentUserData.email}</li>
-            <li>Inscrit depuis {formatDate(currentUserData.created_at)}</li>
+        <section className={style.listContainer} key={currentUserData.id}>
+          <ul className={style.userList}>
+            <li className={style.pseudo}>{currentUserData.username}</li>
+            <li className={style.email}>{currentUserData.email}</li>
+            <li className={style.date}>
+              Inscrit depuis le {formatDate(currentUserData.created_at)}
+            </li>
           </ul>
           <button
             type="button"
@@ -73,7 +77,8 @@ export default function UserList() {
       ))}
       <ConfirmationModal
         isOpen={isModalOpen}
-        message="Êtes-vous sûr de vouloir supprimer cet utilisateur ?"
+        message="Êtes-vous sûr de vouloir supprimer cet utilisateur ?
+        Cette action est irréversible. ⚠️"
         onConfirm={handleDelete}
         onCancel={closeModal}
       />

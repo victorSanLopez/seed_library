@@ -1,3 +1,41 @@
-.confirmationModal {
-  background-color: red;
+.listContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--color-background);
+  border: solid 0.3em var(--color-primary);
+  border-radius: 1em;
+  padding: 0.5em;
+  width: 23em;
+  gap: 1em;
+  padding: 1em;
+  margin: 1em;
+  font-family: var(--text-font);
+  color: var(--color-primary);
+}
+
+.userList {
+  padding-bottom: 1em;
+  border-bottom: dashed 0.3em var(--color-primary);
+}
+
+.pseudo {
+  font-family: var(--title-font);
+  font-size: 1.5em;
+}
+
+.email {
+  font-size: 1.1em;
+}
+
+.date {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.deleteButton {
+  &:hover {
+    color: var(--color-alert);
+    transform: scale(1.01);
+  }
 }

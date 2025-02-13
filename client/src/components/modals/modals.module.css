@@ -8,18 +8,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 20em;
 }
 
 .modal {
-  background-color: white;
+  background-color: var(--color-background);
   padding: 20px;
+  border: solid 0.3em var(--color-primary);
+  outline: solid 0.5em var(--color-background);
   border-radius: 8px;
   width: 400px;
   max-width: 90%;
 }
 
 .modalContent {
+  font-family: var(--text-font);
   text-align: center;
+  font-size: 1.2em;
+  word-break: keep-all;
 }
 
 .actions {
@@ -30,20 +36,24 @@
 
 .confirmButton,
 .cancelButton {
+  width: 7em;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  border: solid 0.1em var(--color-background);
 }
 
 .confirmButton {
-  background-color: #4caf50;
-  color: white;
+  outline: solid 0.2em var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-background);
 }
 
 .cancelButton {
-  background-color: #f44336;
-  color: white;
+  outline: solid 0.2em var(--color-alert);
+  background-color: var(--color-alert);
+  color: var(--color-background);
 }
 
 .confirmButton:hover,

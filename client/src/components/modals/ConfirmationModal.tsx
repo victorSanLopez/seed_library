@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import type { ConfirmationModalProps } from "../../types/modal.d.ts";
-import style from "./confirmationModal.module.css"; // Assure-toi d'ajouter le style
+import style from "./modals.module.css";
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   isOpen,
