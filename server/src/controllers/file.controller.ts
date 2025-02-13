@@ -10,8 +10,8 @@ const fileController: RequestHandler = (req, res, next) => {
     if (err) {
       return res.status(400).json({ error: `Erreur: ${err.message}` });
     }
-    req.body.picture = req.file?.filename || null;
-    console.info("Fichier uploadé avec succès :", req.body.picture);
+    req.body.image = req.file?.filename || null;
+    console.info("Fichier uploadé avec succès :", req.body.image);
     next();
   });
 };

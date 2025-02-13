@@ -20,7 +20,7 @@ export default function SeedEntryPage() {
       formData.append("label", data.label);
       formData.append("description", data.description);
       if (data.image?.[0]) {
-        formData.append("image", data.image[0]);
+        formData.append("file", data.image[0]);
       }
 
       const response = await axios.post(

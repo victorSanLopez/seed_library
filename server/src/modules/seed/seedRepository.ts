@@ -8,11 +8,7 @@ class seedRepository {
     const userId = 6;
     const [result] = await databaseClient.query<Result>(
       `INSERT INTO seed
-        (label,
-            description,
-            image,
-            category_id,
-            user_id)
+        (label, description, image, category_id, user_id)
         VALUES
         (?, ?, ?, ?, ?)`,
       [seed.label, seed.description, seed.image, categoryId, userId],

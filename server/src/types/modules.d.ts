@@ -3,8 +3,8 @@ export type SeedType = {
   label: string;
   description: string;
   image?: string;
-  category_id: number;
-  user_id: number;
+  category_id?: number;
+  user_id?: number;
 };
 
 export type UserType = {
