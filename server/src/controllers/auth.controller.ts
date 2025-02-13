@@ -25,9 +25,9 @@ export const login: RequestHandler = async (req, res, next) => {
   }
 };
 
-export const logout: RequestHandler = (req, res) => {
+export const logout: RequestHandler = async (req, res) => {
   res
-    .status(200)
+    .status(202)
     .clearCookie("auth_token")
     .json({ message: "Utilisateur déconnecté" });
 };
