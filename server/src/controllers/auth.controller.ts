@@ -3,10 +3,10 @@ import { generateToken } from "../helpers/token.utils";
 
 export const login: RequestHandler = async (req, res, next) => {
   try {
-    const { username } = req.body;
-    const payload = { username };
+    const { email } = req.body;
+    const payloadObject = { email };
 
-    const token = await generateToken(payload);
+    const token = generateToken(payloadObject);
 
     res
       .status(200)
@@ -18,8 +18,16 @@ export const login: RequestHandler = async (req, res, next) => {
       .json({
         message: "Utilisateur connecté",
       });
+
     return;
   } catch (err) {
     next(err);
   }
+};
+
+export const logout: RequestHandler = async (req, res) => {
+  res
+    .status(202)
+    .clearCookie("auth_token")
+    .json({ message: "Utilisateur déconnecté" });
 };

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import LogoutButton from "../logButton/LogoutButton";
 import style from "./navHeader.module.css";
 
 export default function AdminNavHeader() {
   return (
     <header className={style.headerContainer}>
+      <LogoutButton />
       <h1 className={style.headerTitle}>Mon Grainetier virtuel</h1>
       <h2 className={style.subTitle}>🌿 Tableau de bord Administrateur 🌱</h2>
       <nav className={style.navbar}>

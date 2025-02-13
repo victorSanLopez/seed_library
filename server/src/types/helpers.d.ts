@@ -1,9 +1,9 @@
 export type DecodedTokenType = {
-  username: string;
+  email: string;
   iat: number;
   exp: number;
 };
 
 export type PayloadType = {
-  username: string;
+  email: string;
 };

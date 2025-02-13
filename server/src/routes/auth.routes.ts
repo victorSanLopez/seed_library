@@ -1,6 +1,8 @@
 import express from "express";
-import { login } from "../controllers/auth.controller";
+import { login, logout } from "../controllers/auth.controller";
+import { authenticateUser } from "../middlewares/authenticateUser.middleware";
 import { validatePassword } from "../middlewares/validatePassword.middleware";
+import { verifyTokenExpiration } from "../middlewares/verifyTokenExpiration.middleware";
 import userActions from "../modules/user/userActions";
 
 const router = express.Router();
@@ -11,5 +13,9 @@ router.post(
   validatePassword,
   login,
 );
+router.post("/logout", logout);
+
+router.use(authenticateUser, verifyTokenExpiration);
+router.get("/protected", userActions.readTokenRoleByEmail);
 
 export default router;

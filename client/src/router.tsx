@@ -1,4 +1,6 @@
+import axios from "axios";
 import { createBrowserRouter } from "react-router-dom";
+import { toast } from "react-toastify";
 import App from "./App";
 import UserList from "./components/userList/UserList";
 import AdminPage from "./pages/adminPage/AdminPage";
@@ -27,6 +29,18 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
+    loader: async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/v1/auth/protected`,
+          { withCredentials: true },
+        );
+        return response.data;
+      } catch (err) {
+        toast.error("Erreur pendant le chargement 😵");
+        throw err;
+      }
+    },
     children: [
       {
         path: "/admin/liste-utilisateurs",
