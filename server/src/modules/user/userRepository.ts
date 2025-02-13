@@ -19,6 +19,16 @@ class userRepository {
     return result.insertId;
   }
 
+  async readAll() {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT u.id, u.username, u.email, u.created_at
+      FROM user AS u
+      JOIN role ON u.role_id = role.id
+      ORDER BY created_at DESC`,
+    );
+    return rows as UserType[];
+  }
+
   async readByEmail(email: string) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT email, password
@@ -39,6 +49,16 @@ class userRepository {
     );
 
     return rows[0].id as number;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      `DELETE FROM user
+      WHERE id = ?`,
+      [id],
+    );
+
+    return result.affectedRows;
   }
 }
 

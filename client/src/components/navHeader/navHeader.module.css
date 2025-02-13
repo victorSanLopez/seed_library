@@ -17,6 +17,16 @@
   width: 100%;
 }
 
+.subTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  color: var(--color-background);
+  padding: 0.3em;
+  border-bottom: dashed 0.1em var(--color-background);
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
