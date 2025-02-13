@@ -4,6 +4,16 @@ import type { DecodedTokenType } from "../../types/helpers";
 import type { UserType } from "../../types/modules";
 import userRepository from "./userRepository";
 
+const browse: RequestHandler = async (req, res, next) => {
+  try {
+    const users = await userRepository.readAll();
+
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const add: RequestHandler = async (req, res, next) => {
   const newUser = req.body;
 
@@ -60,4 +70,22 @@ const getIdByTokenUsername: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { add, getHashedPasswordByEmail, getIdByTokenUsername };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+
+    await userRepository.delete(userId);
+
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  add,
+  getHashedPasswordByEmail,
+  getIdByTokenUsername,
+  destroy,
+};
