@@ -16,9 +16,17 @@ export default function SeedEntryPage() {
 
   const sendData: SubmitHandler<SeedDataType> = async (data) => {
     try {
+      const formData = new FormData();
+      formData.append("label", data.label);
+      formData.append("description", data.description);
+      if (data.image?.[0]) {
+        formData.append("image", data.image[0]);
+      }
+
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/seeds/`,
-        data,
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } },
       );
       toast.success(response.data.message);
     } catch (err) {
