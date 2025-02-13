@@ -17,14 +17,14 @@ class seedRepository {
     return result.insertId;
   }
 
-  async readAllByUserId(userId: number) {
+  async readAll() {
     const [rows] = await databaseClient.query<Rows>(
-      `SELECT s.*, u.username
+      `SELECT
+      s.*,
+      c.label AS category_label
       FROM seed AS s
-      JOIN user AS u ON s.user_id = u.id
-      WHERE user_id = ?
-      ORDER BY created_at DESC`,
-      [userId],
+      JOIN category AS c ON s.category_id = c.id
+      ORDER BY s.created_at DESC`,
     );
     return rows as SeedType[];
   }

@@ -2,12 +2,11 @@ import type { RequestHandler } from "express";
 import type { SeedType } from "../../types/modules";
 import seedRepository from "./seedRepository";
 
-const readByUserId: RequestHandler = async (req, res, next) => {
+const browse: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.userId);
-    const userSeeds = await seedRepository.readAllByUserId(userId);
+    const seeds = await seedRepository.readAll();
 
-    res.json(userSeeds);
+    res.json(seeds);
   } catch (err) {
     next(err);
   }
@@ -32,4 +31,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { readByUserId, add };
+export default { browse, add };
