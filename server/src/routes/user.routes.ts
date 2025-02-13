@@ -4,6 +4,8 @@ import userActions from "../modules/user/userActions";
 
 const router = express.Router();
 
+router.get("/user-list", userActions.browse);
 router.post("/", hashPassword, userActions.add);
+router.delete("/:id", userActions.destroy);
 
 export default router;
