@@ -6,3 +6,7 @@ export const generateToken = async (payload: PayloadType): Promise<string> => {
     expiresIn: "24h",
   });
 };
+
+export const decodeToken = (token: string) => {
+  return jwt.decode(token);
+};

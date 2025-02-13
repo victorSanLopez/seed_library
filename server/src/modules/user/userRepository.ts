@@ -29,6 +29,17 @@ class userRepository {
 
     return rows.length ? (rows[0] as UserType) : null;
   }
+
+  async readIdByUsername(payloadUsername: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT id
+        FROM user
+        WHERE username = ?`,
+      [payloadUsername],
+    );
+
+    return rows[0].id as number;
+  }
 }
 
 export default new userRepository();

@@ -1,5 +1,5 @@
 import databaseClient from "../../../database/client";
-import type { Result } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 import type { SeedType } from "../../types/modules";
 
 class seedRepository {
@@ -15,6 +15,18 @@ class seedRepository {
     );
 
     return result.insertId;
+  }
+
+  async readAllByUserId(userId: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT s.*, u.username
+      FROM seed AS s
+      JOIN user AS u ON s.user_id = u.id
+      WHERE user_id = ?
+      ORDER BY created_at DESC`,
+      [userId],
+    );
+    return rows as SeedType[];
   }
 }
 
