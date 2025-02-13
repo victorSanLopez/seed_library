@@ -4,5 +4,6 @@ export type UserType = {
   email: string;
   password: string;
   confirmPassword: string;
+  created_at: string;
   roleId: number;
 };
