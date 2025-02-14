@@ -1,0 +1,24 @@
+.footerContainer {
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+.footerLogo {
+  border-radius: 100%;
+  width: 7em;
+  height: 7em;
+  border: solid 0.15em var(--color-accent);
+  outline: solid 0.5em var(--color-primary);
+}
+
+.text {
+  width: 75%;
+  padding: 1em;
+  gap: 0.5em;
+  font-family: var(--text-font);
+  color: var(--color-primary);
+}

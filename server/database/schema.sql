@@ -1,21 +1,45 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE role (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    label VARCHAR(50) UNIQUE NOT NULL
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE user (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    role_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE
 );
 
-insert into user(id, email, password)
-values
-  (1, "jdoe@mail.com", "123456");
+CREATE TABLE category (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    label VARCHAR(50) UNIQUE NOT NULL
+);
 
-insert into item(id, title, user_id)
-values
-  (1, "Stuff", 1),
-  (2, "Doodads", 1);
+CREATE TABLE seed (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    label VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    category_id INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
+CREATE TABLE sowing (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    month TINYINT UNSIGNED NOT NULL CHECK (month BETWEEN 1 AND 12),
+    seed_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (seed_id) REFERENCES seed(id) ON DELETE CASCADE
+);
+
+CREATE TABLE harvest (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    month TINYINT UNSIGNED NOT NULL CHECK (month BETWEEN 1 AND 12),
+    seed_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (seed_id) REFERENCES seed(id) ON DELETE CASCADE
+);

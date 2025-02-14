@@ -1,0 +1,58 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: auto 10em;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "label image"
+    "category image"
+    "sowing image"
+    "harvest image"
+    "description description";
+  background-color: var(--color-background);
+  border-radius: 1em 1em 0 0;
+  padding: 1em 0.5em 2em 0.5em;
+  width: 20em;
+  font-family: var(--text-font);
+  color: var(--color-primary);
+  box-shadow: -1px 1px 5px 0 var(--color-hint), inset -4em 0 0 0
+    var(--color-accent);
+  gap: 0.2em;
+  align-items: start;
+}
+.label {
+  font-family: var(--title-font);
+  font-size: 1.3em;
+  text-align: left;
+  margin-bottom: 0.5em;
+  grid-area: label;
+}
+.category {
+  font-style: italic;
+  grid-area: category;
+}
+
+.sowing {
+  font-style: italic;
+  grid-area: sowing;
+}
+
+.harvest {
+  font-style: italic;
+  grid-area: harvest;
+}
+
+.image {
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  border: solid 0.3em var(--color-background);
+  grid-area: image;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.description {
+  padding-top: 2em;
+  font-size: 0.8em;
+  grid-area: description;
+}

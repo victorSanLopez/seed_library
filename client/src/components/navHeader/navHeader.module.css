@@ -1,0 +1,80 @@
+.headerContainer {
+  background-color: var(--color-secondary);
+  padding: 0 0 1em 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--special-font);
+}
+
+.LandingHeaderContainer {
+  padding: 2em 0 0 0;
+}
+
+.headerTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary);
+  font-size: 3em;
+  color: var(--color-background);
+  padding: 0.3em;
+  width: 100%;
+}
+
+.subTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  color: var(--color-background);
+  padding: 0.3em;
+  border-bottom: dashed 0.1em var(--color-background);
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 1.5em;
+  color: var(--color-background);
+  padding: 0.5em 0.5em 0 0.5em;
+}
+
+.link {
+  padding: 0.3em;
+  border: dashed 0.05em var(--color-secondary);
+  border-radius: 15px;
+  outline: solid 0.15em var(--color-secondary);
+  background-color: var(--color-secondary);
+  &:hover {
+    color: var(--color-accent);
+    border: dashed 0.05em var(--color-accent);
+    outline: solid 0.15em var(--color-primary);
+    background-color: var(--color-primary);
+  }
+}
+
+.heroBanner {
+  background-color: var(--color-secondary);
+  background-image: url(/images/herobanner_v1.jpg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 25em;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+}
+
+.submitButton {
+  background-color: var(--color-primary);
+  border: solid 0.1em var(--color-accent);
+  outline: solid 0.2em var(--color-primary);
+  border-radius: 1em;
+  margin: 1em 0 1em 2em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  color: var(--color-accent);
+  font-family: var(--special-font);
+  font-size: 1.5em;
+}
