@@ -1,0 +1,23 @@
+.landingMain {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-background);
+  padding: 2em 0 2em 3em;
+  min-height: 30em;
+  gap: 1em;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  font-family: var(--text-font);
+  width: 50%;
+}
+
+.illustration {
+  background-color: var(--color-background);
+  background-image: url("/images/landing_v1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50%;
+}

@@ -1,0 +1,15 @@
+.logoutButton {
+  font-family: var(--text-font);
+  color: var(--color-background);
+  font-size: 1em;
+  margin: 0.5em;
+  width: 10em;
+  border: dashed 0.2em var(--color-secondary);
+  border-radius: 10px;
+  padding: 0.1em;
+  &:hover {
+    border: dashed 0.2em var(--color-secondary);
+    background-color: var(--color-background);
+    color: var(--color-primary);
+  }
+}
