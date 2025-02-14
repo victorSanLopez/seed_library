@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import App from "./App";
 import UserList from "./components/userList/UserList";
 import AdminPage from "./pages/adminPage/AdminPage";
+import NotFoundPage from "./pages/error404Page/NotFoundPage";
 import LandingLayout from "./pages/landingLayout/LandingLayout";
 import SeedEntryPage from "./pages/seedEntryPage/SeedEntryPage";
 import SeedLibraryPage from "./pages/seedLibraryPage/SeedLibraryPage";
@@ -47,5 +48,9 @@ export const router = createBrowserRouter([
         element: <UserList />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
