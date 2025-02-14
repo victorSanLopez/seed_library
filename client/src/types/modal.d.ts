@@ -4,3 +4,7 @@ export type ConfirmationModalProps = {
   onConfirm: () => void;
   onCancel: () => void;
 };
+
+export type PopupProps = {
+  closePopup: () => void;
+};

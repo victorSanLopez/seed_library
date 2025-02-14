@@ -6,6 +6,10 @@
   font-family: var(--special-font);
 }
 
+.LandingHeaderContainer {
+  padding: 2em 0 0 0;
+}
+
 .headerTitle {
   display: flex;
   flex-direction: column;
@@ -48,4 +52,29 @@
     outline: solid 0.15em var(--color-primary);
     background-color: var(--color-primary);
   }
+}
+
+.heroBanner {
+  background-color: var(--color-secondary);
+  background-image: url(/images/herobanner_v1.jpg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 25em;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+}
+
+.submitButton {
+  background-color: var(--color-primary);
+  border: solid 0.1em var(--color-accent);
+  outline: solid 0.2em var(--color-primary);
+  border-radius: 1em;
+  margin: 1em 0 1em 2em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  color: var(--color-accent);
+  font-family: var(--special-font);
+  font-size: 1.5em;
 }
